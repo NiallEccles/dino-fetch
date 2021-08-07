@@ -50,6 +50,5 @@ export default class HelloWorldScene extends Phaser.Scene {
     shadow.setScale(doux.scale);
 
     doux.play("walk");
-    // emitter.startFollow(logo)
   }
 }
