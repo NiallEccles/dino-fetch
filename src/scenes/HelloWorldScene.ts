@@ -13,6 +13,8 @@ export default class HelloWorldScene extends Phaser.Scene {
       frameHeight: 24,
       frameWidth: 24,
     });
+
+    this.load.image("shadow", "/assets/shadow.png");
   }
 
   create() {
@@ -43,6 +45,9 @@ export default class HelloWorldScene extends Phaser.Scene {
       frameRate: 10,
       frames: this.anims.generateFrameNames("doux", { start: 4, end: 9 }),
     });
+
+    const shadow = this.add.image(doux.x, doux.y + 2, "shadow");
+    shadow.setScale(doux.scale);
 
     doux.play("walk");
     // emitter.startFollow(logo)
