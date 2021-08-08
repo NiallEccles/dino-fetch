@@ -3,7 +3,10 @@ import Phaser from "phaser";
 import HelloWorldScene from "./scenes/HelloWorldScene";
 
 const config: Phaser.Types.Core.GameConfig = {
-  type: Phaser.AUTO,
+  type: Phaser.WEBGL,
+  pixelArt: true,
+  roundPixels: true,
+  parent: "content",
   width: 800,
   height: 600,
   physics: {
