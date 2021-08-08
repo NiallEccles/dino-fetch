@@ -1,21 +1,55 @@
-import Phaser from "phaser";
+declare global {
+  interface Window {
+    sizeChanged: () => void;
+    game: Phaser.Game;
+  }
+}
 
-import HelloWorldScene from "./scenes/HelloWorldScene";
+import { Level1, LoadingScene } from "./scenes";
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.WEBGL,
-  pixelArt: true,
   roundPixels: true,
   parent: "content",
-  width: 800,
-  height: 600,
+  audio: {
+    disableWebAudio: true,
+  },
   physics: {
     default: "arcade",
     arcade: {
-      gravity: { y: 200 },
+      // gravity: { y: 200 },
     },
   },
-  scene: [HelloWorldScene],
+  render: {
+    pixelArt: true,
+  },
+  scale: {
+    mode: Phaser.Scale.ScaleModes.NONE,
+    width: window.innerWidth,
+    height: window.innerHeight,
+  },
+  callbacks: {
+    postBoot: () => {},
+  },
+  autoFocus: true,
+  scene: [LoadingScene, Level1],
 };
 
-export default new Phaser.Game(config);
+window.sizeChanged = () => {
+  if (window.game.isBooted) {
+    setTimeout(() => {
+      window.game.scale.resize(window.innerWidth, window.innerHeight);
+
+      window.game.canvas.setAttribute(
+        "style",
+        `display: block; width: ${window.innerWidth}px; height: ${window.innerHeight}px;`
+      );
+    }, 100);
+  }
+};
+
+window.onresize = () => window["sizeChanged"]();
+
+window.game = new Phaser.Game(config);
+
+export default window.game;
