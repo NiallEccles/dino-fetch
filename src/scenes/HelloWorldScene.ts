@@ -1,13 +1,12 @@
 import Phaser from "phaser";
+export class HelloWorldScene extends Phaser.Scene {
 
-export default class HelloWorldScene extends Phaser.Scene {
   constructor() {
     super({ key: "hello-world", active: true });
   }
 
   preload() {
     this.load.image("bg", "/assets/back.png");
-    this.load.image("mid", "/assets/middle.png");
 
     this.load.spritesheet("doux", "/assets/doux.png", {
       frameHeight: 24,
@@ -28,14 +27,6 @@ export default class HelloWorldScene extends Phaser.Scene {
     let scaleY = this.cameras.main.height / bg.height;
     let scale = Math.max(scaleX, scaleY);
     bg.setScale(scale).setScrollFactor(0);
-
-    // const mid = this.add.tileSprite(
-    //   0,
-    //   this.sys.game.canvas.height,
-    //   this.sys.game.canvas.width,
-    //   this.sys.game.canvas.height,
-    //   "mid"
-    // );
 
     const doux = this.add.sprite(100, 100, "doux", 4);
     doux.setScale(2);
