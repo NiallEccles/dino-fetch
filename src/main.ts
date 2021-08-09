@@ -25,8 +25,8 @@ const config: Phaser.Types.Core.GameConfig = {
   },
   scale: {
     mode: Phaser.Scale.ScaleModes.NONE,
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: 300,
+    height: 300,
   },
   callbacks: {
     postBoot: () => {},

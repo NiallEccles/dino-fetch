@@ -15,10 +15,16 @@ export class LoadingScene extends Phaser.Scene {
       frameHeight: 24,
       frameWidth: 24,
     });
+
+    this.load.image({
+      key: "tiles",
+      url: "village.png",
+    });
+    this.load.tilemapTiledJSON("village", "village-map.json");
   }
 
   create(): void {
     console.log("Loading scene was created");
-    this.scene.start('level-1');
+    this.scene.start("level-1");
   }
 }
