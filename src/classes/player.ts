@@ -26,7 +26,7 @@ export class Player extends Actor {
     this.setScale(2);
 
     this.anims.create({
-      key: "stationary",
+      key: "idle",
       repeat: -1,
       frameRate: 6,
       frames: this.anims.generateFrameNames("doux", { start: 0, end: 3 }),
@@ -60,7 +60,7 @@ export class Player extends Actor {
       frames: this.anims.generateFrameNames("doux", { start: 14, end: 16 }),
     });
 
-    this.anims.play("stationary", true);
+    this.anims.play("idle", true);
   }
 
   update(): void {
@@ -70,7 +70,7 @@ export class Player extends Actor {
       this.body.velocity.y = -110;
       this.anims.play("walk", true);
     } else if (Phaser.Input.Keyboard.JustUp(this.keyW)) {
-      this.anims.play("stationary", true);
+      this.anims.play("idle", true);
     }
 
     if (this.keyA?.isDown) {
@@ -79,20 +79,20 @@ export class Player extends Actor {
       this.getBody().setOffset(48, 15);
       this.anims.play("walk", true);
     } else if (Phaser.Input.Keyboard.JustUp(this.keyA)) {
-      this.anims.play("stationary", true);
+      this.anims.play("idle", true);
     }
 
     if (this.keyShift?.isDown) {
       this.anims.play("crouch", true);
     } else if (Phaser.Input.Keyboard.JustUp(this.keyShift)) {
-      this.anims.play("stationary", true);
+      this.anims.play("idle", true);
     }
 
     if (this.keyS?.isDown) {
       this.body.velocity.y = 110;
       this.anims.play("walk", true);
     } else if (Phaser.Input.Keyboard.JustUp(this.keyS)) {
-      this.anims.play("stationary", true);
+      this.anims.play("idle", true);
     }
 
     if (this.keyD?.isDown) {
@@ -101,14 +101,14 @@ export class Player extends Actor {
       this.getBody().setOffset(15, 15);
       this.anims.play("walk", true);
     } else if (Phaser.Input.Keyboard.JustUp(this.keyD)) {
-      this.anims.play("stationary", true);
+      this.anims.play("idle", true);
     }
 
     if (this.keySpace?.isDown) {
       this.body.velocity.y = -11;
       this.anims.play("jump", true);
     } else if (Phaser.Input.Keyboard.JustUp(this.keySpace)) {
-      this.anims.play("stationary", true);
+      this.anims.play("idle", true);
     }
   }
 }
