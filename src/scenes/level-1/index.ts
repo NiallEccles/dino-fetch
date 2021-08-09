@@ -22,23 +22,23 @@ export class Level1 extends Phaser.Scene {
 
   private initMap(): void {
     this.map = this.make.tilemap({
-      key: "village",
+      key: "dungeon",
       tileWidth: 16,
       tileHeight: 16,
     });
-    this.tileset = this.map.addTilesetImage("village", "tiles");
-    this.groundLayer = this.map.createLayer("ground", this.tileset, 0, 0);
-    this.wallsLayer = this.map.createLayer("walls", this.tileset, 0, 0);
+    this.tileset = this.map.addTilesetImage("dungeon", "tiles");
+    this.groundLayer = this.map.createLayer("Ground", this.tileset, 0, 0);
+    this.wallsLayer = this.map.createLayer("Walls", this.tileset, 0, 0);
     this.wallsLayer.setCollisionByProperty({ collides: true });
 
     this.physics.world.setBounds(
       0,
       0,
-      this.wallsLayer.width,
-      this.wallsLayer.height
+      this.groundLayer.width,
+      this.groundLayer.height
     );
-    this.showDebugWalls();
 
+    this.showDebugWalls();
   }
 
   private showDebugWalls(): void {
@@ -51,7 +51,8 @@ export class Level1 extends Phaser.Scene {
 
   create(): void {
     this.initMap();
-    this.player = new Player(this, 100, 100);
+    this.player = new Player(this, 400, 400);
+    this.physics.add.collider(this.player, this.wallsLayer);
     // this.initCamera();
   }
 

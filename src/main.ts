@@ -23,10 +23,11 @@ const config: Phaser.Types.Core.GameConfig = {
   render: {
     pixelArt: true,
   },
+  backgroundColor: '#351f1b',
   scale: {
     mode: Phaser.Scale.ScaleModes.NONE,
-    width: 300,
-    height: 300,
+    width: 800,
+    height: 800,
   },
   callbacks: {
     postBoot: () => {},
