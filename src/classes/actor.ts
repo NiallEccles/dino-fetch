@@ -43,9 +43,9 @@ export class Actor extends Phaser.Physics.Arcade.Sprite {
 
   protected checkFlip(): void {
     if (this.body.velocity.x < 0) {
-      this.scaleX = -2;
+      this.scaleX = -1;
     } else {
-      this.scaleX = 2;
+      this.scaleX = 1;
     }
   }
 

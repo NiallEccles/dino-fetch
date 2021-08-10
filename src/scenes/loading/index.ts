@@ -17,7 +17,7 @@ export class LoadingScene extends Phaser.Scene {
     });
 
     this.load.image({
-      key: "tiles",
+      key: 'tiles',
       url: 'tilemaps/tiles/dungeon-16-16.png',
     });
     this.load.tilemapTiledJSON('dungeon', 'tilemaps/json/dungeon.json');

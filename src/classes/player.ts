@@ -23,7 +23,7 @@ export class Player extends Actor {
     this.getBody().setSize(30, 30);
     this.getBody().setOffset(8, 0);
 
-    this.setScale(2);
+    this.setScale(1);
 
     this.anims.create({
       key: "idle",
